@@ -7,12 +7,9 @@
   .letter {
     position: relative;
     display: inline-block;
-    /* position: absolute; */
     background-color: black;
     height: 182px;
     width: 126px;
-    
-    /* transform: skewX(-5deg); */
   }
   
   .outer{
@@ -56,7 +53,6 @@
     width: 100%;
     
     border-top: 7px solid red;
-    /* border-bottom: 0; */
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
   }
@@ -136,38 +132,12 @@
     width: 100%;
     
     border-top: 7px solid yellow;
-    /* border-bottom: 0; */
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
     
     position: absolute;
   }
-  /* .diag .upper{
-    top: -50%;
-    left: 0;
-    height: 0;
-    width: 100%;
-    
-    border-top: 7px solid transparent;
-    border-bottom: 7px solid green;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    
-    position: absolute;  
-  }
-  .diag .lower{
-      top: 50%;
-    left: 0;
-    height: 0;
-    width: 100%;
-    
-    border-top: 7px solid blueviolet;
-    border-bottom: 0;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    
-    position: absolute;  
-  } */
+  
   
   .diag .outer_end{
     position: inherit;
@@ -215,14 +185,11 @@
     right: 0;
     margin-right: 8px;
     transform: scaleX(-1);
-    
-    /* background-color: green; */
   }
   .led03{
     top: 0;
     right: 0;
     margin-top: 9px;
-    /* background-color: green; */
   }
   .led04{
     bottom: 0;
@@ -235,16 +202,12 @@
     right: 0;
     margin-right: 8px;
     transform: scale(-1);
-    
-    /* background-color: green; */
   }
   .led06{
     bottom: 0;
     left: 0;
     margin-left: 8px;
     transform: scaleY(-1);
-    
-    /* background-color: blue; */
   }
   .led07{
     bottom: 0;
@@ -258,13 +221,11 @@
     margin-top: 9px;
     transform: scaleX(-1);
   }
-  
   .led09{
     top: 0;
     left: 50%;
     margin-top: 9px;
   }
-  
   .led10{
     top: 0;
     right: 0;
@@ -272,15 +233,12 @@
     margin-right: 15px;
     transform: scaleX(-1);
   }
-
   .led11{
     top: 50%;
     right: 0;
     margin-right: 9px;
-    
     transform: scaleX(-1);
   }
-
   .led12{
     bottom: 0;
     right: 0;
@@ -288,7 +246,6 @@
     margin-right: 15px; 
     transform: scale(-1);
   }
-  
   .led13{
     bottom: 0;
     left: 50%;
@@ -302,20 +259,17 @@
     margin-left: 15px;
     transform: scaleY(-1);
   }
-  
   .led15{
     top: 50%;
     left: 0;
     margin-left: 9px;
   }
-  
   .led16{
     top: 0;
     left: 0;
     margin-top: 15px;
     margin-left: 15px;
   }
-  
   .unlit .ext, .unlit .int{
     border-color: transparent;
   }
