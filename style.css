@@ -41,9 +41,9 @@
     width: 100%;
     
     border-top: 0;
-    border-bottom: 7px solid orange;
+    border-bottom: 7px solid red;
     border-left: 7px solid transparent;
-    border-right: 7px solid orange;
+    border-right: 7px solid red;
   }
   
   .outer_horiz .int{
@@ -79,7 +79,7 @@
     
     border-top: 7px solid transparent;
     border-bottom: 7px solid transparent;
-    border-left: 7px solid blue;
+    border-left: 7px solid red;
     border-right: 7px solid transparent;
     
     position: absolute;
@@ -106,7 +106,7 @@
     
     border-top: 7px solid transparent;
     border-bottom: 7px solid transparent;
-    border-left: 7px solid blue;
+    border-left: 7px solid red;
     border-right: 7px solid transparent;
     
     position: absolute;
@@ -119,7 +119,7 @@
     width: 100%;
     
     border-top: 7px solid transparent;
-    border-bottom: 7px solid orange;
+    border-bottom: 7px solid red;
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
     
@@ -131,7 +131,7 @@
     height: 0;
     width: 100%;
     
-    border-top: 7px solid yellow;
+    border-top: 7px solid red;
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
     
@@ -143,7 +143,7 @@
     position: inherit;
     width: 12px;
     height: 12px;
-    background-color: green;
+    background-color: red;
     left: 1px;
     top: 1px;
   }
@@ -156,12 +156,12 @@
     transform: rotate(-26deg);
   }
   .diag .middle.left{
-    background-color: yellow;
+    background-color: red;
     left: 14px;
     top: 8px;
   }
   .diag .middle.right{
-    background-color: orchid;
+    background-color: red;
     left: 18px;
     top: 0;
   }
@@ -169,7 +169,7 @@
     position: inherit;
     width: 12px;
     height: 12px;
-    background-color: green;
+    background-color: red;
     right: 0;
     bottom: 0;
   }
