@@ -282,6 +282,26 @@ $led-lit-color: red;
     margin-top: $diag-margin;
     margin-left: $diag-margin;
 }
-.unlit .ext, .unlit .int{
-    border-color: transparent;
+// .unlit .ext, .unlit .int{
+//     border-color: transparent;
+// }
+
+.unlit {
+    &.outer{
+        .int, .ext{
+            border-color: transparent;
+        }
+    }
+    &.inner{
+        *{
+            border-color: transparent;
+            // background-color: transparent;  
+        }
+        &.diag{
+            *{
+                background-color: transparent;
+            }
+        }
+    }
+    
 }
