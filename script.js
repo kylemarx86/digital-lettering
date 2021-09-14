@@ -3,71 +3,67 @@ $(document).ready(function(){
     make_char("A");
     make_char("B");
     make_char("C");
-    // create_fully_lit_char("B");
-    // make_char("B");
-    // light_LEDs("A");
+    make_char("D");
+    make_char("E");
+    make_char("F");
+    make_char("G");
+    make_char("H");
+    make_char("I");
+    make_char("J");
+    make_char("K");
+    make_char("L");
+    make_char("M");
 });
-
-
 
 // character array
 // stores values for each character are the LEDs to be unlit
+// NEED TO CREATE DEFAULT VALUE TO RETURN IF CHARACTER NOT FOUND IN ARRAY. MOST LIKELY
+    // THIS WILL BE IN ANOTHER METHOD THAT WILL BE CATCH IF NOT FOUND HERE
 let char_arr = {
-
     "A": [5, 6, 9, 10, 12, 13, 14, 16],
     "B": [7, 8, 10, 12, 14, 15, 16],
-    "C": [3, 4, 9, 10, 11, 12, 13, 14, 15, 16]
-    // "A": [true, true, true, true,
-    //         false, false, true, true,
-    //         false, false, true, false,
-    //         false, false, true, false],
-        
-    //     "B": [true, true, true, true,
-    //         true, true, false, false,
-    //         true, false, true, false,
-    //         true, false, false, false
-    //     ]
+    "C": [3, 4, 9, 10, 11, 12, 13, 14, 15, 16],
+    "D": [7, 8, 10, 11, 12, 14, 15, 16],
+    "E": [3, 4, 9, 10, 12, 13, 14, 16],
+    "F": [3, 4, 5, 6, 9, 10, 12, 13, 14, 16],
+    "G": [3, 9, 10, 12, 13, 14, 15, 16],
+    "H": [1, 2, 5, 6, 9, 10, 12, 13, 14, 16],
+    "I": [3, 4, 7, 8, 10, 11, 12, 14, 15, 16],
+    "J": [1, 2, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+    "K": [1, 2, 3, 4, 5, 6, 9, 11, 13, 14, 16],
+    "L": [1, 2, 3, 4, 9, 10, 11, 12, 13, 14, 15, 16],
+    "M": [1, 2, 5, 6, 9, 11, 12, 14, 15]
+    // "N": [],
+    // "O": [],
+    // "P": [],
+    // "Q": [],
+    // "R": [],
+    // "S": [],
+    // "T": [],
+    // "U": [],
+    // "V": [],
+    // "W": [],
+    // "X": [],
+    // "Y": [],
+    // "Z": [],
+    // "0": [],
+    // "1": [],
+    // "2": [],
+    // "3": [],
+    // "4": [],
+    // "5": [],
+    // "6": [],
+    // "7": [],
+    // "8": [],
+    // "9": []
 };
 
 //make letter funciton
 function make_char(char_to_write){
     create_fully_lit_char(char_to_write);
     light_LEDs(char_to_write);
-    // if(char_to_write == "A"){
-    //     $('.char_A .led').removeClass('unlit');
-    //     $('.char_A .led05').addClass('unlit');
-    //     $('.char_A .led06').addClass('unlit');
-    //     $('.char_A .led09').addClass('unlit');
-    //     $('.char_A .led10').addClass('unlit');
-    //     $('.char_A .led12').addClass('unlit');
-    //     $('.char_A .led13').addClass('unlit');
-    //     $('.char_A .led14').addClass('unlit');
-    //     $('.char_A .led16').addClass('unlit');
-    // }else if (char_to_write == "B"){
-    //     $('.char_B .led').removeClass('unlit');
-    //     $('.char_B .led07').addClass('unlit');
-    //     $('.char_B .led08').addClass('unlit');
-    //     $('.char_B .led10').addClass('unlit');
-    //     $('.char_B .led12').addClass('unlit');
-    //     $('.char_B .led14').addClass('unlit');
-    //     $('.char_B .led15').addClass('unlit');
-    //     $('.char_B .led16').addClass('unlit');
-    // }else if(char_to_write == "X"){
-    //     $('.char_X .led').removeClass('unlit');
-    //     $('.char_X .led01').addClass('unlit');
-    //     $('.char_X .led02').addClass('unlit');
-    //     $('.char_X .led03').addClass('unlit');
-    //     $('.char_X .led04').addClass('unlit');
-    //     $('.char_X .led05').addClass('unlit');
-    //     $('.char_X .led06').addClass('unlit');
-    //     $('.char_X .led07').addClass('unlit');
-    //     $('.char_X .led08').addClass('unlit');
-    //     $('.char_X .led09').addClass('unlit');
-    //     $('.char_X .led11').addClass('unlit');
-    //     $('.char_X .led13').addClass('unlit');
-    //     $('.char_X .led15').addClass('unlit');
-    // }
 }
+
 
 function light_LEDs(char_to_write){
     var char_class = "char_" + char_to_write;
