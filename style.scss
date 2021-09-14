@@ -1,5 +1,7 @@
 $diag-margin: 15px;
 $led-lit-color: red;
+$led-unlit-color: transparent;
+// $led-unlit-color: rgb(50, 15, 15);
 
 .container{
     position: absolute;
@@ -289,17 +291,17 @@ $led-lit-color: red;
 .unlit {
     &.outer{
         .int, .ext{
-            border-color: transparent;
+            border-color: $led-unlit-color;
         }
     }
     &.inner{
         *{
-            border-color: transparent;
+            border-color: $led-unlit-color;
             // background-color: transparent;  
         }
         &.diag{
             *{
-                background-color: transparent;
+                background-color: $led-unlit-color;
             }
         }
     }
