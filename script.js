@@ -2,62 +2,88 @@ $(document).ready(function(){
     console.log('ready');
     make_char("A");
     make_char("B");
-    make_char("X");
-    create_fully_lit_char("B");
+    make_char("C");
+    // create_fully_lit_char("B");
+    // make_char("B");
+    // light_LEDs("A");
 });
 
 
 
-
-//letters array
+// character array
+// stores values for each character are the LEDs to be unlit
 let char_arr = {
-        "A": [true, true, true, true,
-            false, false, true, true,
-            false, false, true, false,
-            false, false, true, false],
-        "B": [true, true, true, true,
-            true, true, false, false,
-            true, false, true, false,
-            true, false, false, false
-        ]
-    };
+
+    "A": [5, 6, 9, 10, 12, 13, 14, 16],
+    "B": [7, 8, 10, 12, 14, 15, 16],
+    "C": [3, 4, 9, 10, 11, 12, 13, 14, 15, 16]
+    // "A": [true, true, true, true,
+    //         false, false, true, true,
+    //         false, false, true, false,
+    //         false, false, true, false],
+        
+    //     "B": [true, true, true, true,
+    //         true, true, false, false,
+    //         true, false, true, false,
+    //         true, false, false, false
+    //     ]
+};
 
 //make letter funciton
 function make_char(char_to_write){
-    if(char_to_write == "A"){
-        $('.char_A .led').removeClass('unlit');
-        $('.char_A .led05').addClass('unlit');
-        $('.char_A .led06').addClass('unlit');
-        $('.char_A .led09').addClass('unlit');
-        $('.char_A .led10').addClass('unlit');
-        $('.char_A .led12').addClass('unlit');
-        $('.char_A .led13').addClass('unlit');
-        $('.char_A .led14').addClass('unlit');
-        $('.char_A .led16').addClass('unlit');
-    }else if (char_to_write == "B"){
-        $('.char_B .led').removeClass('unlit');
-        $('.char_B .led07').addClass('unlit');
-        $('.char_B .led08').addClass('unlit');
-        $('.char_B .led10').addClass('unlit');
-        $('.char_B .led12').addClass('unlit');
-        $('.char_B .led14').addClass('unlit');
-        $('.char_B .led15').addClass('unlit');
-        $('.char_B .led16').addClass('unlit');
-    }else if(char_to_write == "X"){
-        $('.char_X .led').removeClass('unlit');
-        $('.char_X .led01').addClass('unlit');
-        $('.char_X .led02').addClass('unlit');
-        $('.char_X .led03').addClass('unlit');
-        $('.char_X .led04').addClass('unlit');
-        $('.char_X .led05').addClass('unlit');
-        $('.char_X .led06').addClass('unlit');
-        $('.char_X .led07').addClass('unlit');
-        $('.char_X .led08').addClass('unlit');
-        $('.char_X .led09').addClass('unlit');
-        $('.char_X .led11').addClass('unlit');
-        $('.char_X .led13').addClass('unlit');
-        $('.char_X .led15').addClass('unlit');
-    }
+    create_fully_lit_char(char_to_write);
+    light_LEDs(char_to_write);
+    // if(char_to_write == "A"){
+    //     $('.char_A .led').removeClass('unlit');
+    //     $('.char_A .led05').addClass('unlit');
+    //     $('.char_A .led06').addClass('unlit');
+    //     $('.char_A .led09').addClass('unlit');
+    //     $('.char_A .led10').addClass('unlit');
+    //     $('.char_A .led12').addClass('unlit');
+    //     $('.char_A .led13').addClass('unlit');
+    //     $('.char_A .led14').addClass('unlit');
+    //     $('.char_A .led16').addClass('unlit');
+    // }else if (char_to_write == "B"){
+    //     $('.char_B .led').removeClass('unlit');
+    //     $('.char_B .led07').addClass('unlit');
+    //     $('.char_B .led08').addClass('unlit');
+    //     $('.char_B .led10').addClass('unlit');
+    //     $('.char_B .led12').addClass('unlit');
+    //     $('.char_B .led14').addClass('unlit');
+    //     $('.char_B .led15').addClass('unlit');
+    //     $('.char_B .led16').addClass('unlit');
+    // }else if(char_to_write == "X"){
+    //     $('.char_X .led').removeClass('unlit');
+    //     $('.char_X .led01').addClass('unlit');
+    //     $('.char_X .led02').addClass('unlit');
+    //     $('.char_X .led03').addClass('unlit');
+    //     $('.char_X .led04').addClass('unlit');
+    //     $('.char_X .led05').addClass('unlit');
+    //     $('.char_X .led06').addClass('unlit');
+    //     $('.char_X .led07').addClass('unlit');
+    //     $('.char_X .led08').addClass('unlit');
+    //     $('.char_X .led09').addClass('unlit');
+    //     $('.char_X .led11').addClass('unlit');
+    //     $('.char_X .led13').addClass('unlit');
+    //     $('.char_X .led15').addClass('unlit');
+    // }
+}
+
+function light_LEDs(char_to_write){
+    var char_class = "char_" + char_to_write;
+    console.log("char class: ", char_class);
+    console.log("char to write", char_arr[char_to_write]);
+    // ensure all LEDs are lit
+    $(char_class).removeClass('unlit');
+    // gather values of LEDs to be unlit
+    var unlit_arr = char_arr[char_to_write];
+    // for each value in the array, make that LED unlit
+    unlit_arr.forEach(element => {
+        // capture text of led number and format if less than 10 to account for leading zero
+        var led_number = "led" + (element < 10 ? "0" : "") + element;
+        // add unlit to LED within that character
+        $('.' + char_class + ' .' + led_number).addClass('unlit');
+    });
 }
 
 /**
