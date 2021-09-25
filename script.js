@@ -27,6 +27,7 @@ $(document).ready(function(){
     make_char("Y");
     make_char("Z");
 
+    make_char(" ");
     make_char("0");
     make_char("1");
     make_char("2");
@@ -37,7 +38,9 @@ $(document).ready(function(){
     make_char("7");
     make_char("8");
     make_char("9");
+
 });
+
 
 // character array
 // stores values for each character are the LEDs to be unlit
@@ -79,7 +82,8 @@ let char_arr = {
     "6": [3, 9, 10, 12, 13, 14, 16],
     "7": [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
     "8": [9, 10, 12, 13, 14, 16],
-    "9": [7, 9, 10, 12, 13, 14, 16]
+    "9": [7, 9, 10, 12, 13, 14, 16],
+    " ": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
 };
 
 //make letter funciton
