@@ -1,16 +1,14 @@
 $(document).ready(function(){
-    console.log('ready');
-    
     write_sentence("HEY WhaTS GoING ON?");
 });
 
-
-
-
-// character array
-// stores values for each character are the LEDs to be unlit
-// NEED TO CREATE DEFAULT VALUE TO RETURN IF CHARACTER NOT FOUND IN ARRAY. MOST LIKELY
-    // THIS WILL BE IN ANOTHER METHOD THAT WILL BE CATCH IF NOT FOUND HERE
+/**
+ * Character array
+ * 
+ * Description: Stores values for which LED numbers are to be unlit in each corresponding character.
+ *    Available characters are A-Z, 0-9, " ", and "*".
+ *    Wild card character '*' is intended for use with any character not currently in the array.
+ */
 let char_arr = {
     "A": [5, 6, 9, 10, 12, 13, 14, 16],
     "B": [7, 8, 10, 12, 14, 15, 16],
@@ -52,16 +50,35 @@ let char_arr = {
     "*": []  //wild card character to catch any character that is not in this array
 };
 
-// read sentence and break in to 
+/**
+ * Summary: Inputs a string sentence and prints in digital characters for each character in string.
+ * 
+ * @see make_char
+ * 
+ * @param {string} sentence String of characters to create digital characters from.
+ */
 function write_sentence(sentence){
+    //sanitize string of characters by changing all characters to uppercase since no lowercase characters in the char_arr
     sentence = sentence.toUpperCase();
+    //loop through the characters in the sentence and create character for them.
     for(i = 0; i < sentence.length; i++){
-        console.log("char:", sentence.substring(i, i+1));
         make_char(sentence.substring(i, i+1));
     }
 }
 
-//make letter funciton
+/**
+ * Summary: Prints character to DOM as series of lit html LED elements.
+ * 
+ * Description: Takes input of character to attempt to write converts it to a character than can be written. Takes character
+ *    to write and will create DOM element array of fully lit LEDs. Finally, adds classes to DOM elements that do not need to be lit
+ *    based on the character by adding classes to them.
+ * 
+ * @see sanitize_character
+ * @see create_fully_lit_char
+ * @see light_LEDs
+ * 
+ * @param {string} char_to_write Character attempting to write. 
+ */
 function make_char(char_to_write){
     //filter out characters that can't be written
     char_to_write = sanitize_character(char_to_write);
@@ -69,8 +86,16 @@ function make_char(char_to_write){
     light_LEDs(char_to_write);
 }
 
-// filters out characters that can't currently be written.
-// returns the wild card character '*' if it is not in the char_arr
+/**
+ * Summary: Filters out characters that cannot currently be written.
+ * 
+ * Description: Compares character to list of available characters in char_arr. Returns the 
+ *    wild card character '*' if it is not in the char_arr. Otherwise, returns the character.
+ * 
+ * @param {*} char_to_write 
+ * 
+ * @returns {string} 
+ */
 function sanitize_character(char_to_write){
     if(!char_arr.hasOwnProperty(char_to_write)){
         return '*';
@@ -100,13 +125,16 @@ function light_LEDs(char_to_write){
         // add unlit to LED within that character
         $('.' + char_class + ' .' + led_number).addClass('unlit');
     });
-
-
 }
 
 /**
  * Summary: Creates html elements with classes to represent the 16 LEDs.
- * Creates and adds class to represent which alphanumeric character this will be.
+ * 
+ * Description: Creates div elements to represent the 16 LEDs that compose a character.
+ *    All LED divs will be lit, i.e. they are created without the unlit class.
+ *    Creates and adds class to represent which alphanumeric character this will be.
+ *    Outer LEDs are labeled as led01 through led08. Inner LEDs are labeled led09 through led16.
+ * 
  * @param {string} char_to_write Character attempting to write. Character should be pre-sanitized.
  */
  function create_fully_lit_char(char_to_write){
@@ -137,7 +165,7 @@ function light_LEDs(char_to_write){
 
     //creates inner LEDs in character
     for(var i = 9; i <= 16; i++){
-        // if i is 
+        // if i is less than 10, i.e. i=9, then a leading zero is required
         var led_class_number = "led" + (i < 10 ? "0" : "") + i;
         var orientation_class;
         var $led = $('<div>').addClass('led').addClass('inner');
