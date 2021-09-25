@@ -38,8 +38,13 @@ $(document).ready(function(){
     make_char("7");
     make_char("8");
     make_char("9");
-
+    make_char("*");
+    make_char("-");
+    make_char("+");
+    make_char("/");
 });
+
+
 
 
 // character array
@@ -84,12 +89,32 @@ let char_arr = {
     "8": [9, 10, 12, 13, 14, 16],
     "9": [7, 9, 10, 12, 13, 14, 16],
     " ": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+    "*": []  //wild card character to catch any character that is not in this array
 };
+
+// // read sentence and break in to 
+// function write_sentence(sentence){
+//     for(int = 0; i < sentence.length; i++){
+//         make_char(sentence.substring(i, 1));
+//     }
+// }
 
 //make letter funciton
 function make_char(char_to_write){
+    //filter out characters that can't be written
+    char_to_write = sanitize_character(char_to_write);
     create_fully_lit_char(char_to_write);
     light_LEDs(char_to_write);
+}
+
+// filters out characters that can't currently be written.
+// returns the wild card character '*' if it is not in the char_arr
+function sanitize_character(char_to_write){
+    if(!char_arr.hasOwnProperty(char_to_write)){
+        return '*';
+    }else{
+        return char_to_write;
+    }
 }
 
 
@@ -108,6 +133,8 @@ function light_LEDs(char_to_write){
         // add unlit to LED within that character
         $('.' + char_class + ' .' + led_number).addClass('unlit');
     });
+
+
 }
 
 /**
