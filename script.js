@@ -1,47 +1,7 @@
 $(document).ready(function(){
     console.log('ready');
-    make_char("A");
-    make_char("B");
-    make_char("C");
-    make_char("D");
-    make_char("E");
-    make_char("F");
-    make_char("G");
-    make_char("H");
-    make_char("I");
-    make_char("J");
-    make_char("K");
-    make_char("L");
-    make_char("M");
-    make_char("N");
-    make_char("O");
-    make_char("P");
-    make_char("Q");
-    make_char("R");
-    make_char("S");
-    make_char("T");
-    make_char("U");
-    make_char("V");
-    make_char("W");
-    make_char("X");
-    make_char("Y");
-    make_char("Z");
-
-    make_char(" ");
-    make_char("0");
-    make_char("1");
-    make_char("2");
-    make_char("3");
-    make_char("4");
-    make_char("5");
-    make_char("6");
-    make_char("7");
-    make_char("8");
-    make_char("9");
-    make_char("*");
-    make_char("-");
-    make_char("+");
-    make_char("/");
+    
+    write_sentence("HEY WhaTS GoING ON?");
 });
 
 
@@ -92,12 +52,14 @@ let char_arr = {
     "*": []  //wild card character to catch any character that is not in this array
 };
 
-// // read sentence and break in to 
-// function write_sentence(sentence){
-//     for(int = 0; i < sentence.length; i++){
-//         make_char(sentence.substring(i, 1));
-//     }
-// }
+// read sentence and break in to 
+function write_sentence(sentence){
+    sentence = sentence.toUpperCase();
+    for(i = 0; i < sentence.length; i++){
+        console.log("char:", sentence.substring(i, i+1));
+        make_char(sentence.substring(i, i+1));
+    }
+}
 
 //make letter funciton
 function make_char(char_to_write){
@@ -120,8 +82,8 @@ function sanitize_character(char_to_write){
 
 function light_LEDs(char_to_write){
     var char_class = "char_" + char_to_write;
-    console.log("char class: ", char_class);
-    console.log("char to write", char_arr[char_to_write]);
+    // console.log("char class: ", char_class);
+    // console.log("char to write", char_arr[char_to_write]);
     // ensure all LEDs are lit
     $(char_class).removeClass('unlit');
     // gather values of LEDs to be unlit
