@@ -79,11 +79,16 @@ function sanitize_character(char_to_write){
     }
 }
 
-
+/**
+ * Summary: Identifies html elements to add the unlit class to based on char_to_write
+ * 
+ * Description: Ensures all html LED elements with current character are 'lit'. Uses name of character to identify 
+ *   which LEDs to add 'unlit' class to from char_arr.
+ * 
+ * @param {string} char_to_write 
+ */
 function light_LEDs(char_to_write){
     var char_class = "char_" + char_to_write;
-    // console.log("char class: ", char_class);
-    // console.log("char to write", char_arr[char_to_write]);
     // ensure all LEDs are lit
     $(char_class).removeClass('unlit');
     // gather values of LEDs to be unlit
@@ -100,14 +105,16 @@ function light_LEDs(char_to_write){
 }
 
 /**
- * param:
+ * Summary: Creates html elements with classes to represent the 16 LEDs.
+ * Creates and adds class to represent which alphanumeric character this will be.
+ * @param {string} char_to_write Character attempting to write. Character should be pre-sanitized.
  */
  function create_fully_lit_char(char_to_write){
     var char_class = "char_" + char_to_write;
     var $char = $('<div>').addClass('char').addClass(char_class);
     $('.container').append($char);
 
-    //create outer LEDs in character
+    //creates outer LEDs in character
     for(var i = 1; i <= 8; i++){
         //recall all integers i <= 8 are also less than 10, thus needing leading zero
         var led_class_number = "led0" + i;
@@ -128,7 +135,7 @@ function light_LEDs(char_to_write){
         $char.append($led);
     }
 
-    //create inner LEDs in character
+    //creates inner LEDs in character
     for(var i = 9; i <= 16; i++){
         // if i is 
         var led_class_number = "led" + (i < 10 ? "0" : "") + i;
