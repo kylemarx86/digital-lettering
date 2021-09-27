@@ -91,7 +91,36 @@ $led-unlit-color: transparent;
         position: absolute;
     }
 }
-  
+
+
+.inner_horiz {
+    .top{
+      bottom: 100%;
+      left: 0;
+      height: 0;
+      width: 100%;
+      
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid $led-lit-color;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      
+      position: absolute;
+    }
+    .bottom{
+      bottom: 50%;
+      left: 0;
+      height: 0;
+      width: 100%;
+      
+      border-top: 7px solid $led-lit-color;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      
+      position: absolute;
+    }
+}
+
 .inner_vert{
     .left{
         top: 0;
@@ -121,33 +150,7 @@ $led-unlit-color: transparent;
     }
 }
   
-.inner_horiz {
-  .top{
-    bottom: 100%;
-    left: 0;
-    height: 0;
-    width: 100%;
-    
-    border-top: 7px solid transparent;
-    border-bottom: 7px solid $led-lit-color;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    
-    position: absolute;
-  }
-  .bottom{
-    bottom: 50%;
-    left: 0;
-    height: 0;
-    width: 100%;
-    
-    border-top: 7px solid $led-lit-color;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    
-    position: absolute;
-  }
-}
+
   
   
 .diag{
