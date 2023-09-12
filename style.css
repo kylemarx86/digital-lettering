@@ -2,7 +2,7 @@
   position: absolute;
   height: 200px;
   width: 100%;
-  background-color: blue;
+  background-color: black;
 }
 
 .char {
@@ -22,7 +22,7 @@ path.lit {
   fill: red;
 }
 path.unlit {
-  fill: darkred;
+  fill: #470a0a;
 }
 
 /*# sourceMappingURL=style.css.map */
