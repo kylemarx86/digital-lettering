@@ -1,6 +1,6 @@
 $(document).ready(function(){
     // write_sentence("HEY WhaTS GoING ON?");
-    write_sentence("HEY Guy");
+    write_sentence("HEY");
 });
 
 /**
@@ -172,8 +172,8 @@ function light_LEDs(char_to_write){
 
     // creates all LEDs in character
     for(var i = 0; i < 16; i++){
-        var led_class_number = `led${i<10 ? "0" : ""}${i}`;
-        var $led = $('<path>').addClass('led').addClass(led_class_number).addClass('unlit').attr('d', LED_array[i]);
+        var led_class_number = `led${i+1 < 10 ? "0" : ""}${i+1}`; // added an i+1 here
+        var $led = $('<path>').addClass('led').addClass(led_class_number).addClass('lit').attr('d', LED_array[i]);
         $svg.append($led);
     }
     $char.append($svg);
