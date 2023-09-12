@@ -1,6 +1,5 @@
 .container {
   position: absolute;
-  height: 200px;
   width: 100%;
   background-color: black;
 }
@@ -9,13 +8,15 @@
   position: relative;
   display: inline-block;
   background-color: black;
-  height: 204px;
+  height: 205px;
   width: 143px;
 }
 
 svg {
   position: relative;
   display: inline-block;
+  height: 205px;
+  width: 143px;
 }
 
 path.lit {
