@@ -27,17 +27,15 @@ svg {
 }
 
 path {
-    fill: $led-unlit-color;
+    &.lit {
+        // background-color: $led-lit-color;
+        fill: $led-lit-color;
+    }
+    &.unlit {
+        // background-color: $led-unlit-color;
+        fill: $led-unlit-color;
+    }
 }
-.lit {
-    // background-color: $led-lit-color;
-    fill: $led-lit-color;
-}
-.unlit {
-    // background-color: $led-unlit-color;
-    // fill: $led-unlit-color;
-}
-
 
 
 // .outer{

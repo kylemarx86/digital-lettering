@@ -18,12 +18,11 @@ svg {
   display: inline-block;
 }
 
-path {
-  fill: darkred;
-}
-
-.lit {
+path.lit {
   fill: red;
+}
+path.unlit {
+  fill: darkred;
 }
 
 /*# sourceMappingURL=style.css.map */
