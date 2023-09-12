@@ -1,6 +1,6 @@
 $(document).ready(function(){
-    // write_sentence("HEY WhaTS GoING ON?");
-    write_sentence("HEY");
+    write_sentence("HEY WhaTS GoING ON?");
+    // write_sentence("HEY");
 });
 
 /**
@@ -168,14 +168,19 @@ function light_LEDs(char_to_write){
 
     var $char = $('<div>').addClass('char').addClass(char_class);
     $('.container').append($char);
-    var $svg = $('<svg>').attr("height", "204").attr("width", "143");
+    // var $svg = $('<svg>').attr("height", "204").attr("width", "143");
+    var $svg = $('<svg>');
+    var $scale = 1;
+    var $g = $('<g>').attr("transform", `scale(${$scale} ${$scale})`);
 
     // creates all LEDs in character
     for(var i = 0; i < 16; i++){
         var led_class_number = `led${i+1 < 10 ? "0" : ""}${i+1}`; // added an i+1 here
         var $led = $('<path>').addClass('led').addClass(led_class_number).addClass('lit').attr('d', LED_array[i]);
-        $svg.append($led);
+        $g.append($led);
+        // $svg.append($led);
     }
+    $svg.append($g);
     $char.append($svg);
     $("body").html($("body").html()); // Hack to refresh the reading of the svg. See https://stackoverflow.com/questions/3642035/jquerys-append-not-working-with-svg-element
 }
