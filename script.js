@@ -1,6 +1,35 @@
 $(document).ready(function(){
-    write_sentence("HEY WhaTS GoING ON?");
+    // write_sentence("HEY WhaTS GoING ON?");
+    write_sentence("HEY Guy");
 });
+
+/**
+ * LED array
+ * 
+ * Description: Stores values of SVG paths to create a full character
+ */
+const LED_array = [
+      "M 2 17 L 9 10 L 16 17 L 16 92 L 9 99 L 2 92 Z",
+      "M 64 17 L 71 10 L 78 17 L 78 92 L 71 99 L 64 92 Z",
+      "M 126 17 L 133 10 L 140 17 L 140 92 L 133 99 L 126 92 Z",
+      "M 9 105 L 16 112 L 16 187 L 9 194 L 2 187 L 2 112 Z",
+      
+      "M 71 105 L 78 112 L 78 187 L 71 194 L 64 187 L 64 112 Z",
+      "M 133 105 L 140 112 L 140 187 L 133 194 L 126 187 L 126 112 Z",
+      "M 17 2 L 69 2 L 69 8 L 63 14 L 17 14 L 11 8 Z",
+      "M 73 2 L 125 2 L 131 8 L 125 14 L 79 14 L 73 8 Z",
+      
+      
+      "M 17 95 L 63 95 L 70 102 L 63 109 L 17 109 L 10 102 Z",
+      "M 80 95 L 126 95 L 133 102 L 126 109 L 80 109 L 73 102 Z",
+      "M 17 190 L 63 190 L 69 196 L 69 202 L 17 202 L 11 196 Z",
+      "M 79 190 L 125 190 L 131 196 L 125 202 L 73 202 L 73 196 Z",
+      
+      "M 19 17 L 32 17 L 61 75 L 61 92 L 49 92 L 19 32 Z",
+      "M 110 17 L 123 17 L 123 32 L 93 92 L 81 92 L 81 75 Z",
+      "M 49 112 L 61 112 L 61 129 L 32 187 L 19 187 L 19 172 Z",
+      "M 81 112 L 93 112 L 123 172 L 123 187 L 110 187 L 81 129 Z"
+];
 
 /**
  * Character array
@@ -139,64 +168,17 @@ function light_LEDs(char_to_write){
  */
  function create_fully_lit_char(char_to_write){
     var char_class = "char_" + char_to_write;
+
     var $char = $('<div>').addClass('char').addClass(char_class);
     $('.container').append($char);
+    var $svg = $('<svg>').attr("height", "204").attr("width", "143");
 
-    //creates outer LEDs in character
-    for(var i = 1; i <= 8; i++){
-        //recall all integers i <= 8 are also less than 10, thus needing leading zero
-        var led_class_number = "led0" + i;
-        // orientation class to state whether led is horizontal or vertical
-            // if remainder when divided by 4 of i -1 is less than 2, orientation is horiz, else vert
-        var orientation_class;
-        if( (i - 1) % 4 < 2){
-            orientation_class = "outer_horiz";
-        }else{
-            orientation_class = "outer_vert";
-        }
-        var $led = $('<div>').addClass('led').addClass('outer').addClass(orientation_class).addClass(led_class_number);
-
-        var $ext = $('<div>').addClass('ext');
-        var $int = $('<div>').addClass('int');
-        
-        $led.append($ext, $int);
-        $char.append($led);
+    // creates all LEDs in character
+    for(var i = 0; i < 16; i++){
+        var led_class_number = `led${i<10 ? "0" : ""}${i}`;
+        var $led = $('<path>').addClass('led').addClass(led_class_number).addClass('unlit').attr('d', LED_array[i]);
+        $svg.append($led);
     }
-
-    //creates inner LEDs in character
-    for(var i = 9; i <= 16; i++){
-        // if i is less than 10, i.e. i=9, then a leading zero is required
-        var led_class_number = "led" + (i < 10 ? "0" : "") + i;
-        var orientation_class;
-        var $led = $('<div>').addClass('led').addClass('inner');
-
-        // class to state orientation of inner led
-            // if remainder when divided by 2 of i -1 is  equal to 0, orientation is horiz or vert, else is diagonal
-        if( (i-1) % 2 == 0){
-            // orientation is horiz or vert
-            if( (i-1) % 4 == 0){
-                // orientation is vert
-                orientation_class = "inner_vert";
-                var $left = $('<div>').addClass('left');
-                var $right = $('<div>').addClass('right');
-                $led.append($left, $right);
-            }else{
-                // orientation is horiz
-                orientation_class = "inner_horiz";
-                var $top = $('<div>').addClass('top');
-                var $bottom = $('<div>').addClass('bottom');
-                $led.append($top, $bottom);
-            }
-        }else{
-            // orientation is diag
-            orientation_class = "diag";
-            var $outer_end = $('<div>').addClass('outer_end');
-            var $middle_left = $('<div>').addClass('middle').addClass('left');
-            var $middle_right = $('<div>').addClass('middle').addClass('right');
-            var $inner_end = $('<div>').addClass('inner_end');
-            $led.append($outer_end, $middle_left, $middle_right, $inner_end);
-        }
-        $led.addClass(orientation_class).addClass(led_class_number);
-        $char.append($led);
-    }
+    $char.append($svg);
+    $("body").html($("body").html()); // Hack to refresh the reading of the svg. See https://stackoverflow.com/questions/3642035/jquerys-append-not-working-with-svg-element
 }
