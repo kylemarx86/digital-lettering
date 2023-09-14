@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    write_sentence("HEY WhaTS GoING ON?");
+    write_sentence("Kyle marx");
     // write_sentence("HEY");
 });
 
@@ -9,6 +9,26 @@ $(document).ready(function(){
  * Description: Stores values of SVG paths to create a full character
  */
 const LED_array = [
+    "M 19 4 L 71 4 L 71 10 L 65 16 L 19 16 L 13 10 Z", //1
+    "M 75 4 L 127 4 L 133 10 L 127 16 L 81 16 L 75 10 Z", //2
+    "M 128 19 L 135 12 L 142 19 L 142 94 L 135 101 L 128 94 Z", //3
+    "M 135 107 L 142 114 L 142 189 L 135 196 L 128 189 L 128 114 Z", //4
+    "M 81 192 L 127 192 L 133 198 L 127 204 L 75 204 L 75 198 Z", //5
+    "M 19 192 L 65 192 L 71 198 L 71 204 L 19 204 L 13 198 Z", //6
+    "M 11 107 L 18 114 L 18 189 L 11 196 L 4 189 L 4 114 Z", //7
+    "M 4 19 L 11 12 L 18 19 L 18 94 L 11 101 L 4 94 Z", //8
+
+    "M 66 19 L 73 12 L 80 19 L 80 94 L 73 101 L 66 94 Z", //9
+    "M 112 19 L 125 19 L 125 34 L 95 94 L 83 94 L 83 77 Z", //10
+    "M 82 97 L 128 97 L 135 104 L 128 111 L 82 111 L 75 104 Z", //11
+    "M 83 114 L 95 114 L 125 174 L 125 189 L 112 189 L 83 131 Z", //12
+    "M 73 107 L 80 114 L 80 189 L 73 196 L 66 189 L 66 114 Z", //13
+    "M 51 114 L 63 114 L 63 131 L 34 189 L 21 189 L 21 174 Z", //14
+    "M 19 97 L 65 97 L 72 104 L 65 111 L 19 111 L 12 104 Z", //15
+    "M 21 19 L 34 19 L 63 77 L 63 94 L 51 94 L 21 34 Z", //16
+];
+
+const old_LED_array = [
     "M 17 2 L 69 2 L 69 8 L 63 14 L 17 14 L 11 8 Z",    //1
     "M 73 2 L 125 2 L 131 8 L 125 14 L 79 14 L 73 8 Z", //2
     "M 126 17 L 133 10 L 140 17 L 140 92 L 133 99 L 126 92 Z",  //3
@@ -22,6 +42,7 @@ const LED_array = [
     "M 110 17 L 123 17 L 123 32 L 93 92 L 81 92 L 81 75 Z", //10
     "M 80 95 L 126 95 L 133 102 L 126 109 L 80 109 L 73 102 Z", //11
     "M 81 112 L 93 112 L 123 172 L 123 187 L 110 187 L 81 129 Z",    //12
+    
     "M 71 105 L 78 112 L 78 187 L 71 194 L 64 187 L 64 112 Z",  //13
     "M 49 112 L 61 112 L 61 129 L 32 187 L 19 187 L 19 172 Z",  //14
     "M 17 95 L 63 95 L 70 102 L 63 109 L 17 109 L 10 102 Z",    //15
@@ -171,7 +192,7 @@ function light_LEDs(char_to_write){
     // var $svg = $('<svg>').attr("height", "204").attr("width", "143");
     var $svg = $('<svg>');
     var $scale = 1;
-    var $g = $('<g>').attr("transform", `scale(${$scale} ${$scale})`);
+    var $g = $('<g>').attr("transform", `scale(${$scale} ${$scale})`);  // not sure if g element is needed after all. might be able to more effectively change size through css
 
     // creates all LEDs in character
     for(var i = 0; i < 16; i++){
