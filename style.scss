@@ -1,312 +1,51 @@
-$diag-margin: 15px;
-$led-lit-color: red;
-$led-unlit-color: transparent; // utilize this variable
-// $led-unlit-color: rgb(50, 15, 15);
+@use 'sass:math';
 
-.container{
-    position: absolute;
-    height: 200px;
+$char-width-height-ratio: math.div(147px, 209px);
+$char-ht: 209px;
+$char-w: $char-ht * $char-width-height-ratio;
+
+$led-lit-color: red;
+$led-unlit-color: rgb(71, 10, 10); // utilize this variable // was transparent before
+
+* {
+    margin: 0;
+}
+
+body {
+    background-color: black;
+}
+
+div.container{
+    display: flex;
+    flex-wrap: wrap;
+    height: $char-ht;
     width: 100%;
     background-color: black;
+    margin: 0;
   }
 .char {
-    position: relative;
     display: inline-block;
+    position: relative;
     background-color: black;
-    height: 182px;
-    width: 126px;
-}
-  
-.outer{
-    position: absolute;
-    margin: 1px;
-}
-  
-.outer_horiz, .inner_horiz{
-    height: 14px;
-    width: 40px;
-}
-.outer_vert, .inner_vert{
-    height: 67px;
-    width: 14px;
-}
-.inner{
-    position: absolute;
-    &.diag{
-        height: 68px;
-        width: 40px;
-    }
-}
-  
-.outer_horiz {
-    .ext{
-        top: 0;
-        left: 0;
-        height: 0;
-        width: 100%;
-        
-        border-top: 0;
-        border-bottom: 7px solid $led-lit-color;
-        border-left: 7px solid transparent;
-        border-right: 7px solid $led-lit-color;
-    }
-    .int{
-        top: 50%;
-        left: 0;
-        height: 0;
-        width: 100%;
-        
-        border-top: 7px solid $led-lit-color;
-        border-left: 7px solid transparent;
-        border-right: 7px solid transparent;
-    }
-}
-  
-.outer_vert{
-    .int{
-        top: 0;
-        right: 50%;
-        height: 100%;
-        width: 0;
-        
-        border-top: 7px solid transparent;
-        border-bottom: 7px solid transparent;
-        border-left: 7px solid transparent;
-        border-right: 7px solid $led-lit-color;
-        
-        position: absolute;
-    }
-
-    .ext{
-        top: 0;
-        left: 50%;
-        height: 100%;
-        width: 0;
-        
-        border-top: 7px solid transparent;
-        border-bottom: 7px solid transparent;
-        border-left: 7px solid $led-lit-color;
-        border-right: 7px solid transparent;
-        
-        position: absolute;
-    }
+    height: $char-ht;
+    width: $char-w;
 }
 
-
-.inner_horiz {
-    .top{
-      bottom: 100%;
-      left: 0;
-      height: 0;
-      width: 100%;
-      
-      border-top: 7px solid transparent;
-      border-bottom: 7px solid $led-lit-color;
-      border-left: 7px solid transparent;
-      border-right: 7px solid transparent;
-      
-      position: absolute;
-    }
-    .bottom{
-      bottom: 50%;
-      left: 0;
-      height: 0;
-      width: 100%;
-      
-      border-top: 7px solid $led-lit-color;
-      border-left: 7px solid transparent;
-      border-right: 7px solid transparent;
-      
-      position: absolute;
-    }
+svg {
+    display: inline-block;
+    height: $char-ht;
+    width: $char-w;
 }
 
-.inner_vert{
-    .left{
-        top: 0;
-        right: 100%;
-        height: 100%;
-        width: 0;
-    
-        border-top: 7px solid transparent;
-        border-bottom: 7px solid transparent;
-        border-left: 7px solid transparent;
-        border-right: 7px solid $led-lit-color;
-    
-        position: absolute;
-    }
-    .right{
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 0;
-        
-        border-top: 7px solid transparent;
-        border-bottom: 7px solid transparent;
-        border-left: 7px solid $led-lit-color;
-        border-right: 7px solid transparent;
-        
-        position: absolute;
-    }
+g {
+    display: inline-block;
 }
-  
 
-  
-  
-.diag{
-    
-    .outer_end{
-        position: inherit;
-        width: 12px;
-        height: 12px;
-        background-color: $led-lit-color;
-        left: 1px;
-        top: 1px;
+path {
+    &.lit {
+        fill: $led-lit-color;
     }
-    .middle{
-        position: inherit;
-        width: 9px;
-        height: 61px;
-        left: 0;
-        top: 0;
-        transform: rotate(-26deg);
-        &.left{
-            background-color: $led-lit-color;
-            left: 14px;
-            top: 8px;
-        }
-        &.right{
-            background-color: $led-lit-color;
-            left: 18px;
-            top: 0;
-        }
+    &.unlit {
+        fill: $led-unlit-color;
     }
-    .inner_end{
-        position: inherit;
-        width: 12px;
-        height: 12px;
-        background-color: $led-lit-color;
-        right: 0;
-        bottom: 0;
-    }
-}
-  
-  
-.led01{
-    top: 0;
-    left: 0;
-    margin-left: 8px;
-}
-.led02{
-    top: 0;
-    right: 0;
-    margin-right: 8px;
-    transform: scaleX(-1);
-}
-.led03{
-    top: 0;
-    right: 0;
-    margin-top: 9px;
-}
-.led04{
-    bottom: 0;
-    right: 0;
-    margin-bottom: 9px;
-    transform: scaleY(-1);
-}
-.led05{
-    bottom: 0;
-    right: 0;
-    margin-right: 8px;
-    transform: scale(-1);
-}
-.led06{
-    bottom: 0;
-    left: 0;
-    margin-left: 8px;
-    transform: scaleY(-1);
-}
-.led07{
-    bottom: 0;
-    left: 0;
-    margin-bottom: 9px;
-    transform: scale(-1);
-}
-.led08{
-    top: 0;
-    left: 0;
-    margin-top: 9px;
-    transform: scaleX(-1);
-}
-.led09{
-    top: 0;
-    left: 50%;
-    margin-top: 9px;
-}
-.led10{
-    top: 0;
-    right: 0;
-    margin-top: $diag-margin;
-    margin-right: $diag-margin;
-    transform: scaleX(-1);
-}
-.led11{
-    top: 50%;
-    right: 0;
-    margin-right: 9px;
-    transform: scaleX(-1);
-}
-.led12{
-    bottom: 0;
-    right: 0;
-    margin-bottom: $diag-margin;
-    margin-right: $diag-margin; 
-    transform: scale(-1);
-}
-.led13{
-    bottom: 0;
-    left: 50%;
-    margin-bottom: 9px;
-    transform: scaleY(-1);
-}
-.led14{
-    bottom: 0;
-    left: 0;
-    margin-bottom: $diag-margin;
-    margin-left: $diag-margin;
-    transform: scaleY(-1);
-}
-.led15{
-    top: 50%;
-    left: 0;
-    margin-left: 9px;
-}
-.led16{
-    top: 0;
-    left: 0;
-    margin-top: $diag-margin;
-    margin-left: $diag-margin;
-}
-// .unlit .ext, .unlit .int{
-//     border-color: transparent;
-// }
-
-.unlit {
-    &.outer{
-        .int, .ext{
-            border-color: $led-unlit-color;
-        }
-    }
-    &.inner{
-        *{
-            border-color: $led-unlit-color;
-            // background-color: transparent;  
-        }
-        &.diag{
-            *{
-                background-color: $led-unlit-color;
-            }
-        }
-    }
-    
 }
